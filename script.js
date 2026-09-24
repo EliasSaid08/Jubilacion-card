@@ -387,4 +387,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // la solapa se abre, sale la tarjeta y luego se muestra la invitación
     setTimeout(() => envelope.classList.add('hidden'), 2700);
   });
+
+  // ---------- Brillos decorativos flotando sobre toda la invitación ----------
+  const sparklesWrap = document.getElementById('sparkles');
+  if (sparklesWrap) {
+    const SPARKLE_COUNT = 22;
+    for (let n = 0; n < SPARKLE_COUNT; n++) {
+      const sp = document.createElement('span');
+      const size = 4 + Math.random() * 7;
+      sp.className = 'sparkle' + (n % 4 === 0 ? ' sparkle-rose' : '');
+      sp.style.left = `${Math.random() * 100}%`;
+      sp.style.top = `${Math.random() * 100}%`;
+      sp.style.width = `${size}px`;
+      sp.style.height = `${size}px`;
+      sp.style.animationDuration = `${2.4 + Math.random() * 3.2}s`;
+      sp.style.animationDelay = `-${Math.random() * 6}s`;
+      sparklesWrap.appendChild(sp);
+    }
+  }
 });

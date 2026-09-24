@@ -10,7 +10,7 @@
   --dorado-claro: #e6cd8a;
   --card-bg: #fffafb;
   --text-dark: #3a1220;
-  --text-light: #7a4a5a;
+  --text-light: #6b3347;
   --font-script: 'Parisienne', cursive;
   --font-serif: 'Cormorant Garamond', serif;
   --font-sans: 'Montserrat', sans-serif;
@@ -117,7 +117,9 @@ body {
   text-transform: uppercase;
   text-align: center;
   width: 100%;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
+.snap-section.dark .serif-title { text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35); }
 
 .script-text {
   font-family: var(--font-script);
@@ -127,10 +129,10 @@ body {
 
 .section-icon { color: var(--dorado); }
 
-.card-title { font-size: clamp(1.15rem, 3.2vh, 1.5rem); letter-spacing: 2px; }
+.card-title { font-size: clamp(1.3rem, 3.6vh, 1.7rem); letter-spacing: 2px; }
 .card-subtitle {
   font-family: var(--font-serif);
-  font-size: clamp(1.4rem, 3.8vh, 1.8rem);
+  font-size: clamp(1.55rem, 4.2vh, 2rem);
   font-weight: 600;
   color: var(--rosa-viejo-oscuro);
   letter-spacing: 1px;
@@ -146,8 +148,8 @@ body {
 .primary-button {
   display: inline-block;
   font-family: var(--font-sans);
-  font-size: 0.78rem;
-  font-weight: 600;
+  font-size: 0.85rem;
+  font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
   text-decoration: none;
@@ -226,7 +228,7 @@ body {
 
 .envelope-label {
   font-family: var(--font-script);
-  font-size: clamp(2rem, 6vh, 2.6rem);
+  font-size: clamp(2.1rem, 6.4vh, 2.8rem);
   line-height: 1.1;
   color: var(--dorado-claro);
   text-align: center;
@@ -290,14 +292,14 @@ body {
 .env-card-kicker {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 0.78rem;
+  font-size: 0.9rem;
   line-height: 1.25;
   color: var(--text-light);
   max-width: 94%;
 }
 .env-card-names {
   font-family: var(--font-script);
-  font-size: clamp(1.9rem, 5.6vh, 2.4rem);
+  font-size: clamp(2.1rem, 6vh, 2.6rem);
   line-height: 1.05;
   color: var(--bordo);
 }
@@ -411,7 +413,7 @@ body {
 .seal-hint { text-align: center; }
 .seal-hint span {
   display: inline-block;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--rosa);
@@ -444,12 +446,12 @@ body {
 .hero-kicker {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   color: var(--rosa);
 }
 .hero-title {
   color: var(--dorado-claro);
-  font-size: clamp(1.5rem, 4.4vh, 2rem);
+  font-size: clamp(1.65rem, 4.8vh, 2.2rem);
   letter-spacing: 5px;
 }
 .couple-names {
@@ -464,7 +466,7 @@ body {
 .couple-connector { font-size: 0.55em; line-height: 1; color: var(--rosa); -webkit-text-fill-color: var(--rosa); }
 .hero-date {
   font-family: var(--font-serif);
-  font-size: 1.5rem;
+  font-size: 1.65rem;
   letter-spacing: 4px;
   text-transform: uppercase;
   color: var(--rosa-claro);
@@ -483,11 +485,11 @@ body {
   padding: 0.9rem 1rem 1rem;
   backdrop-filter: blur(4px);
 }
-.countdown-card-title { font-size: 0.7rem; letter-spacing: 4px; color: var(--dorado-claro); display: block; margin-bottom: 0.5rem; }
+.countdown-card-title { font-size: 0.78rem; letter-spacing: 4px; color: var(--dorado-claro); display: block; margin-bottom: 0.5rem; }
 .countdown-container { display: flex; justify-content: center; align-items: flex-start; gap: 0.4rem; }
 .countdown-item { display: flex; flex-direction: column; align-items: center; min-width: 54px; }
 .countdown-number { font-family: var(--font-serif); font-size: 2.1rem; font-weight: 600; line-height: 1; color: #fff; font-variant-numeric: tabular-nums; }
-.countdown-label { font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; color: var(--rosa); margin-top: 0.3rem; }
+.countdown-label { font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: var(--rosa); margin-top: 0.3rem; }
 .countdown-divider { font-family: var(--font-serif); font-size: 1.8rem; color: var(--dorado); line-height: 1; }
 
 /* ============ TARJETA DE CADA JUBILADA ============ */
@@ -521,15 +523,16 @@ body {
   pointer-events: none;
 }
 .mujer-name {
-  font-size: clamp(2rem, 5.4dvh, 3rem);
+  font-size: clamp(2.2rem, 5.8dvh, 3.3rem);
   line-height: 1;
   color: var(--bordo);
   margin-top: 0.1rem;
 }
 .mujer-text {
   font-family: var(--font-serif);
-  font-size: clamp(0.8rem, 1.95dvh, 1.05rem);
-  line-height: 1.35;
+  font-size: clamp(0.92rem, 2.2dvh, 1.18rem);
+  font-weight: 500;
+  line-height: 1.4;
   color: var(--text-light);
   padding: 0 0.4rem;
 }
@@ -650,7 +653,8 @@ body {
 .gallery-hint {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 0.9rem;
+  font-weight: 600;
+  font-size: 1.02rem;
   color: var(--text-light);
 }
 
@@ -741,8 +745,8 @@ body {
 }
 .lugar-card .card-title { color: var(--dorado-claro); }
 .lugar-card .card-subtitle { color: #fff; }
-.card-row { font-size: 0.95rem; color: var(--rosa-claro); line-height: 1.5; }
-.card-row strong { color: var(--dorado-claro); font-weight: 600; letter-spacing: 1px; }
+.card-row { font-size: 1.05rem; font-weight: 500; color: var(--rosa-claro); line-height: 1.55; }
+.card-row strong { color: var(--dorado-claro); font-weight: 700; letter-spacing: 1px; }
 .lugar-card .primary-button { margin-top: 0.8rem; }
 
 /* ============ CONFIRMACIÓN ============ */
@@ -768,7 +772,8 @@ body {
 .rsvp-card::-webkit-scrollbar-thumb { background: rgba(201, 162, 77, 0.45); border-radius: 4px; }
 
 .rsvp-description {
-  font-size: min(1.9vh, 0.8rem);
+  font-size: min(2.1vh, 0.92rem);
+  font-weight: 500;
   line-height: 1.5;
   color: var(--text-dark);
 }
@@ -783,10 +788,10 @@ body {
 .form-group label,
 .counter-label {
   font-family: var(--font-sans);
-  font-size: min(1.5vh, 0.65rem);
+  font-size: min(1.7vh, 0.72rem);
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--rosa-viejo-oscuro);
 }
 .rsvp-input {
@@ -795,7 +800,7 @@ body {
   border-bottom: 1px solid rgba(201, 162, 77, 0.6);
   background: transparent;
   font-family: var(--font-serif);
-  font-size: min(2.2vh, 1rem);
+  font-size: min(2.4vh, 1.1rem);
   color: var(--text-dark);
   padding: 0.35rem 0.1rem;
   outline: none;
@@ -831,24 +836,24 @@ body {
   min-width: 1.6rem;
   text-align: center;
 }
-.counter-price { font-size: min(1.4vh, 0.62rem); color: var(--text-light); letter-spacing: 0.3px; }
+.counter-price { font-size: min(1.6vh, 0.7rem); font-weight: 600; color: var(--text-light); letter-spacing: 0.3px; }
 
 .rsvp-summary {
   font-family: var(--font-sans);
-  font-size: min(1.6vh, 0.7rem);
+  font-size: min(1.8vh, 0.78rem);
   letter-spacing: 0.4px;
   color: var(--dorado);
   font-weight: 700;
   text-transform: uppercase;
   line-height: 1.6;
 }
-.rsvp-error { font-size: min(1.5vh, 0.68rem); color: #a3213f; display: none; }
+.rsvp-error { font-size: min(1.6vh, 0.72rem); color: #a3213f; display: none; }
 .rsvp-error.visible { display: block; }
 
 .rsvp-tarjeta-divider { width: 100%; display: flex; align-items: center; gap: 0.6rem; margin: min(1vh, 0.5rem) 0 min(0.6vh, 0.3rem); }
 .rsvp-tarjeta-divider::before,
 .rsvp-tarjeta-divider::after { content: ''; flex: 1; height: 1px; background: rgba(201, 162, 77, 0.5); }
-.rsvp-tarjeta-divider span { font-size: 0.62rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--dorado); }
+.rsvp-tarjeta-divider span { font-size: 0.68rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--dorado); }
 
 .tarjeta-inline { width: 100%; display: flex; flex-direction: column; align-items: center; gap: min(0.8vh, 0.4rem); }
 .tarjeta-precios { display: flex; justify-content: center; width: 100%; }
@@ -863,12 +868,12 @@ body {
   border-radius: 10px;
   padding: min(1vh, 0.55rem) 0.5rem;
 }
-.precio-label { font-size: min(1.4vh, 0.62rem); font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-light); }
-.precio-valor { font-family: var(--font-serif); font-weight: 700; font-size: min(2.8vh, 1.35rem); color: var(--bordo); }
+.precio-label { font-size: min(1.55vh, 0.68rem); font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-light); }
+.precio-valor { font-family: var(--font-serif); font-weight: 700; font-size: min(2.9vh, 1.4rem); color: var(--bordo); }
 
-.tarjeta-breakdown { display: flex; flex-direction: column; align-items: center; gap: 0.15rem; font-size: min(1.65vh, 0.75rem); color: var(--text-dark); }
+.tarjeta-breakdown { display: flex; flex-direction: column; align-items: center; gap: 0.15rem; font-size: min(1.8vh, 0.82rem); font-weight: 500; color: var(--text-dark); }
 .tarjeta-breakdown p { margin: 0; }
-.tarjeta-total { font-family: var(--font-serif); font-size: min(2.3vh, 1.05rem); font-weight: 700; color: var(--bordo); }
+.tarjeta-total { font-family: var(--font-serif); font-size: min(2.4vh, 1.1rem); font-weight: 700; color: var(--bordo); }
 
 /* Aviso resaltado: fecha límite de pago */
 .pago-aviso {
@@ -889,7 +894,7 @@ body {
 .pago-aviso-body { display: flex; flex-direction: column; gap: 0.1rem; }
 .pago-aviso-label {
   font-family: var(--font-sans);
-  font-size: min(1.4vh, 0.62rem);
+  font-size: min(1.55vh, 0.68rem);
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
@@ -897,7 +902,7 @@ body {
 }
 .pago-aviso-text {
   font-family: var(--font-serif);
-  font-size: min(2.3vh, 1.05rem);
+  font-size: min(2.4vh, 1.1rem);
   line-height: 1.25;
   color: var(--rosa-claro);
 }
@@ -905,10 +910,10 @@ body {
 
 /* Botones de confirmación (apilados) */
 .rsvp-buttons-container { display: flex; flex-direction: column; justify-content: center; gap: 0.5rem; width: 100%; margin-top: min(1.2vh, 0.6rem); }
-.rsvp-btn { width: 100%; padding: min(1.5vh, 0.7rem) 0.5rem; font-size: min(1.7vh, 0.72rem); }
+.rsvp-btn { width: 100%; padding: min(1.5vh, 0.7rem) 0.5rem; font-size: min(1.8vh, 0.78rem); }
 
 /* ============ FINAL ============ */
-/* Composición: título arriba (pegado al borde superior), mensaje centrado, pie abajo */
+/* Composición: título arriba (pegado al borde superior), mensaje justo debajo (sin hueco vacío) */
 .final-section {
   justify-content: flex-start;
   padding-top: calc(14px + min(2.5dvh, 1rem));
@@ -919,15 +924,15 @@ body {
   min-height: 0;
   justify-content: flex-start;
   background: transparent;
-  gap: min(1.4dvh, 0.8rem);
+  gap: min(1.6dvh, 0.9rem);
   padding: 0.6rem 1.6rem 0;
 }
 .final-message {
-  margin-block: auto;                /* queda centrado en el espacio entre el título y el pie */
+  margin-top: min(2.4dvh, 1.2rem);   /* pegado al ornamento, sin hueco vacío en el medio */
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: min(2.4dvh, 1.3rem);
+  gap: min(2vh, 1.1rem);
 }
 
 /* Marco dorado fino que enmarca toda la página final */
@@ -973,13 +978,15 @@ body {
 .final-subtitle {
   max-width: 30ch;
   font-family: var(--font-serif);
-  font-size: clamp(1.05rem, 2.7dvh, 1.25rem);
-  line-height: 1.6;
+  font-size: clamp(1.3rem, 3.6dvh, 1.7rem);
+  font-weight: 500;
+  line-height: 1.5;
   color: var(--rosa-claro);
   font-style: italic;
   text-wrap: balance;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
 }
-.final-subtitle-close { font-style: normal; font-weight: 500; color: var(--dorado-claro); }
+.final-subtitle-close { font-style: normal; font-weight: 600; color: var(--dorado-claro); }
 
 .invitation-footer {
   position: absolute !important;
@@ -993,16 +1000,16 @@ body {
   text-align: center;
 }
 .final-section .invitation-footer { bottom: 1.7rem; }
-.footer-dev { font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: var(--rosa); opacity: 0.7; }
+.footer-dev { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--rosa); opacity: 0.8; }
 .footer-more {
   display: inline-block;
   padding: 0.3rem 0.7rem;
-  font-size: 0.55rem;
+  font-size: 0.62rem;
   letter-spacing: 1px;
   color: var(--dorado-claro);
   text-decoration: underline;
   text-underline-offset: 3px;
-  opacity: 0.85;
+  opacity: 0.9;
   transition: var(--transition);
 }
 .footer-more:hover,
@@ -1028,6 +1035,43 @@ body {
 .music-icon-wrapper.spinning { animation: spin 4s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
+/* ============ BRILLOS DECORATIVOS ============ */
+/* Capa fija dentro de app-wrapper: queda encima de todas las secciones al hacer scroll */
+.sparkles-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 15;
+  overflow: hidden;
+  pointer-events: none;
+}
+.sparkle {
+  position: absolute;
+  background: radial-gradient(circle, #ffffff 0%, var(--dorado-claro) 45%, transparent 72%);
+  clip-path: polygon(50% 0%, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0% 50%, 39% 39%);
+  opacity: 0;
+  filter: drop-shadow(0 0 4px var(--dorado-claro));
+  animation: sparkle-twinkle ease-in-out infinite;
+}
+.sparkle.sparkle-rose {
+  background: radial-gradient(circle, #ffffff 0%, var(--rosa) 45%, transparent 72%);
+  filter: drop-shadow(0 0 4px var(--rosa));
+}
+@keyframes sparkle-twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.35) rotate(0deg); }
+  50% { opacity: 0.85; transform: scale(1.2) rotate(90deg); }
+}
+
+/* Brillo extra sobre los títulos y ornamentos dorados */
+.serif-title, .script-text, .final-monogram, .env-card-names, .couple-names {
+  position: relative;
+}
+.ornament i {
+  box-shadow: 0 0 6px 1px rgba(201, 162, 77, 0.6);
+}
+.countdown-number, .precio-valor, .tarjeta-total {
+  text-shadow: 0 0 10px rgba(230, 205, 138, 0.35);
+}
+
 /* ============ ANIMACIÓN DE ENTRADA ============ */
 .snap-section .mujer-card,
 .snap-section .lugar-card,
@@ -1044,11 +1088,12 @@ body {
 .snap-section.in-view .countdown-card { transition-delay: 0.25s; }
 
 @media (max-height: 640px) {
-  .mujer-text { font-size: 0.95rem; line-height: 1.4; }
+  .mujer-text { font-size: 1.02rem; line-height: 1.4; }
   .mujer-photo { height: 36dvh; }
 }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
   .snap-section .mujer-card, .snap-section .lugar-card, .snap-section .rsvp-card,
   .snap-section .final-card, .header-content-wrapper, .countdown-card { opacity: 1; transform: none; }
+  .sparkle { display: none; }
 }
