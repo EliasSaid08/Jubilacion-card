@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#6b1a34" />
+  <meta name="description" content="Te invitamos a celebrar su jubilación" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌸%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Parisienne&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Portada: foto de la escuela + nombres en una sola línea */
+    .hero-photo {
+      position: relative;
+      width: min(80%, 300px);
+      aspect-ratio: 16 / 9;          /* solo hasta que carga la foto; después el JS lo ajusta a la imagen */
+      margin: min(0.6vh, 0.3rem) 0;
+      border: 2px solid var(--dorado-claro);
+      border-radius: 14px;
+      outline: 1px solid rgba(230, 205, 138, 0.5);
+      outline-offset: 4px;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--rosa) 0%, var(--rosa-viejo) 100%);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+    }
+    .hero-photo.fitted { aspect-ratio: auto; }
+    .hero-photo img { width: 100%; height: auto; display: block; }
+    .hero-photo.no-photo { display: flex; align-items: center; justify-content: center; }
+    .hero-photo.no-photo img { display: none; }
+    .hero-photo.no-photo::after {
+      content: attr(data-label);
+      font-family: var(--font-script);
+      font-size: 2rem;
+      color: var(--bordo);
+      opacity: 0.7;
+    }
+    .couple-names { font-size: clamp(2.4rem, min(13vw, 7vh), 3.6rem); line-height: 1.1; }
+    .couple-names .couple-connector { display: inline-block; margin: 0 0.12em; }
+  </style>
+  <title>Sandra & Lina | Celebramos su jubilación</title>
+</head>
+
+<body>
+
+  <!-- ===================== SOBRE DE APERTURA ===================== -->
+  <div id="envelope-screen">
+    <div class="env-frame"></div>
+    <div class="petals" id="petals" aria-hidden="true"></div>
+
+    <div class="envelope-label">Una celebración muy especial</div>
+
+    <div class="envelope-wrap">
+      <!-- interior (se ve al abrir la solapa) -->
+      <div class="env-liner"></div>
+
+      <!-- tarjeta que sale del sobre -->
+      <div class="env-card">
+        <span class="env-card-kicker">Te invitamos a celebrar la jubilación de</span>
+        <span class="env-card-names">Sandra &amp; Lina</span>
+        <div class="ornament"><span></span><i></i><span></span></div>
+      </div>
+
+      <!-- frente del sobre -->
+      <div class="env-front">
+        <svg viewBox="0 0 300 200" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="gPocket" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#fbe3e9" />
+              <stop offset="1" stop-color="#efc0cd" />
+            </linearGradient>
+            <linearGradient id="gBottom" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#f8d3dc" />
+              <stop offset="1" stop-color="#e7aebd" />
+            </linearGradient>
+          </defs>
+          <polygon points="0,0 150,105 300,0 300,200 0,200" fill="url(#gPocket)" />
+          <polygon points="0,0 150,105 0,200" fill="rgba(255,255,255,0.28)" />
+          <polygon points="300,0 150,105 300,200" fill="rgba(107,26,52,0.05)" />
+          <polygon points="0,200 150,98 300,200" fill="url(#gBottom)" />
+          <polyline points="0,0 150,105 300,0" fill="none" stroke="#c9a24d" stroke-width="1.2" />
+          <polyline points="0,200 150,98 300,200" fill="none" stroke="#c9a24d" stroke-width="1" opacity="0.8" />
+          <rect x="3" y="3" width="294" height="194" fill="none" stroke="#c9a24d" stroke-width="0.8" opacity="0.6" />
+        </svg>
+        <div class="env-front-text">
+          <span class="env-front-names">Sandra &amp; Lina</span>
+          <span class="env-front-sub">Jubilación</span>
+        </div>
+      </div>
+
+      <!-- solapa -->
+      <div class="env-flap"></div>
+
+      <!-- sello de lacre -->
+      <button class="seal" id="sealBtn" aria-label="Abrir invitación">
+        <span class="seal-ring"></span>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <g fill="#e6cd8a">
+            <ellipse cx="12" cy="6.2" rx="2.6" ry="3.6" />
+            <ellipse cx="12" cy="6.2" rx="2.6" ry="3.6" transform="rotate(72 12 12)" />
+            <ellipse cx="12" cy="6.2" rx="2.6" ry="3.6" transform="rotate(144 12 12)" />
+            <ellipse cx="12" cy="6.2" rx="2.6" ry="3.6" transform="rotate(216 12 12)" />
+            <ellipse cx="12" cy="6.2" rx="2.6" ry="3.6" transform="rotate(288 12 12)" />
+          </g>
+          <circle cx="12" cy="12" r="2.3" fill="#6b1a34" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="seal-hint"><span>Tocá el sello para abrir</span></div>
+  </div>
+
+  <div class="app-wrapper">
+    <audio id="bg-audio" src="assets/musica.mp3" loop></audio>
+
+    <!-- Control flotante de música (se oculta solo si no existe assets/musica.mp3) -->
+    <button id="music-toggle-btn" class="music-toggle-btn" aria-label="Reproducir música">
+      <div id="music-icon-wrapper" class="music-icon-wrapper">
+        <svg id="icon-play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+          <path d="M8 5v14l11-7z" />
+        </svg>
+        <svg id="icon-pause" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" style="display:none;">
+          <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
+        </svg>
+      </div>
+    </button>
+
+    <div class="invitation-container">
+
+      <!-- ===================== PORTADA ===================== -->
+      <header class="header-section snap-section dark">
+        <div class="header-content-wrapper">
+          <p class="hero-kicker">Les desea una</p>
+          <h3 class="serif-title hero-title">¡Feliz Jubilación!</h3>
+          <figure class="hero-photo" data-label="Foto de la escuela">
+            <img src="assets/escuela.jpg" alt="Escuela N° 236 Dr. Néstor C. Kirchner, La Ciénaga" onerror="this.closest('.hero-photo').classList.add('no-photo')">
+          </figure>
+          <h1 class="script-text couple-names">
+            Sandra <span class="couple-connector">&amp;</span> Lina
+          </h1>
+          <p class="hero-date">13 de Noviembre</p>
+        </div>
+        <div class="countdown-card">
+          <span class="countdown-card-title">FALTAN</span>
+          <div class="countdown-container">
+            <div class="countdown-item">
+              <span id="cd-dias" class="countdown-number">00</span>
+              <span class="countdown-label">Días</span>
+            </div>
+            <div class="countdown-divider">:</div>
+            <div class="countdown-item">
+              <span id="cd-horas" class="countdown-number">00</span>
+              <span class="countdown-label">Horas</span>
+            </div>
+            <div class="countdown-divider">:</div>
+            <div class="countdown-item">
+              <span id="cd-min" class="countdown-number">00</span>
+              <span class="countdown-label">Min.</span>
+            </div>
+            <div class="countdown-divider">:</div>
+            <div class="countdown-item">
+              <span id="cd-seg" class="countdown-number">00</span>
+              <span class="countdown-label">Seg.</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- ===================== JUBILADA 1 ===================== -->
+      <section class="mujer-section snap-section pink">
+        <div class="mujer-card">
+          <h3 class="serif-title card-title">Despedimos a nuestra dire</h3>
+
+          <figure class="mujer-photo" data-label="Foto de Sandra">
+            <img src="assets/jubilada-1/foto.jpg" alt="Sandra" onerror="this.closest('.mujer-photo').classList.add('no-photo')">
+            <button type="button" class="zoom-btn" aria-label="Ampliar foto de Sandra">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" /></svg>
+            </button>
+          </figure>
+
+          <h2 class="script-text mujer-name" data-nombre>Sandra</h2>
+          <div class="ornament"><span></span><i></i><span></span></div>
+          <p class="mujer-text"> Una mujer que no dirigió desde un escritorio, sino desde el corazón de la escuela.
+Una directora que conocía a cada alumno, no solo por su nombre, sino por su historia, por su problema, por su alegría.
+Que tuvo un inmenso sentido de pertenencia, porque esta escuela no fue su trabajo, fue su casa. Y nosotros, su familia.
+Una mujer que dio todo su tiempo, que siempre estaba, para todos, a cualquier hora.
+Gracias por enseñarnos que dirigir es cuidar, es escuchar y es amar. Esta escuela lleva su huella para siempre.</p>
+        </div>
+      </section>
+
+      <!-- ===================== JUBILADA 2 ===================== -->
+      <section class="mujer-section snap-section rose">
+        <div class="mujer-card">
+          <h3 class="serif-title card-title">Despedimos a nuestra profe</h3>
+
+          <figure class="mujer-photo" data-label="Foto de Lina">
+            <img src="assets/jubilada-2/foto.jpg" alt="Lina" onerror="this.closest('.mujer-photo').classList.add('no-photo')">
+            <button type="button" class="zoom-btn" aria-label="Ampliar foto de Lina">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" /></svg>
+            </button>
+          </figure>
+
+          <h2 class="script-text mujer-name" data-nombre>Lina</h2>
+          <div class="ornament"><span></span><i></i><span></span></div>
+          <p class="mujer-text">Una docente, que supo transmitir la Palabra de Dios no solo con su voz, sino con su ejemplo.
+Elegante por fuera, con sus tacos altos y su caminar de pasarela que todos admiramos, pero mucho más elegante por dentro, con su entrega, su buena actitud y su corazón al servicio de Dios.
+Esbelta, impecable, siempre bien vestida, pero sobre todo, siempre bien dispuesta para escuchar, para aconsejar, para enseñar.
+Gracias por tantos años de vocación, de siembra y de amor. Su huella no se jubila, queda en cada alumno.</p>
+        </div>
+      </section>
+
+      <!-- ===================== MOMENTOS COMPARTIDOS ===================== -->
+      <section class="mujer-section galeria snap-section pink">
+        <div class="mujer-card galeria-card">
+          <h3 class="serif-title card-title">Momentos Compartidos</h3>
+
+          <div class="carousel" data-carousel>
+            <div class="carousel-track">
+              <figure class="carousel-slide" data-label="Foto 1"><img src="assets/momentos-compartidos/foto-1.jpeg" alt="Momento compartido 1" onerror="this.closest('.carousel-slide').classList.add('no-photo')"></figure>
+              <figure class="carousel-slide" data-label="Foto 2"><img src="assets/momentos-compartidos/foto-2.jpeg" alt="Momento compartido 2" onerror="this.closest('.carousel-slide').classList.add('no-photo')"></figure>
+              <figure class="carousel-slide" data-label="Foto 3"><img src="assets/momentos-compartidos/foto-3.jpeg" alt="Momento compartido 3" onerror="this.closest('.carousel-slide').classList.add('no-photo')"></figure>
+              <figure class="carousel-slide" data-label="Foto 4"><img src="assets/momentos-compartidos/foto-4.jpeg" alt="Momento compartido 4" onerror="this.closest('.carousel-slide').classList.add('no-photo')"></figure>
+              <figure class="carousel-slide" data-label="Foto 5"><img src="assets/momentos-compartidos/foto-5.jpeg" alt="Momento compartido 5" onerror="this.closest('.carousel-slide').classList.add('no-photo')"></figure>
+              <figure class="carousel-slide" data-label="Foto 6"><img src="assets/momentos-compartidos/foto-6.jpeg" alt="Momento compartido 6" onerror="this.closest('.carousel-slide').classList.add('no-photo')"></figure>
+              <figure class="carousel-slide" data-label="Foto 7"><img src="assets/momentos-compartidos/foto-7.jpeg" alt="Momento compartido 7" onerror="this.closest('.carousel-slide').classList.add('no-photo')"></figure>
+              <figure class="carousel-slide" data-label="Foto 8"><img src="assets/momentos-compartidos/foto-8.jpeg" alt="Momento compartido 8" onerror="this.closest('.carousel-slide').classList.add('no-photo')"></figure>
+              <figure class="carousel-slide" data-label="Foto 9"><img src="assets/momentos-compartidos/foto-9.jpeg" alt="Momento compartido 9" onerror="this.closest('.carousel-slide').classList.add('no-photo')"></figure>
+              <figure class="carousel-slide" data-label="Foto 10"><img src="assets/momentos-compartidos/foto-10.jpeg" alt="Momento compartido 10" onerror="this.closest('.carousel-slide').classList.add('no-photo')"></figure>
+              <figure class="carousel-slide" data-label="Foto 11"><img src="assets/momentos-compartidos/foto-11.jpeg" alt="Momento compartido 11" onerror="this.closest('.carousel-slide').classList.add('no-photo')"></figure>
+              <figure class="carousel-slide" data-label="Foto 12"><img src="assets/momentos-compartidos/foto-12.jpeg" alt="Momento compartido 12" onerror="this.closest('.carousel-slide').classList.add('no-photo')"></figure>
+              <figure class="carousel-slide" data-label="Foto 13"><img src="assets/momentos-compartidos/foto-13.jpeg" alt="Momento compartido 13" onerror="this.closest('.carousel-slide').classList.add('no-photo')"></figure>
+              <figure class="carousel-slide" data-label="Foto 14"><img src="assets/momentos-compartidos/foto-14.jpeg" alt="Momento compartido 14" onerror="this.closest('.carousel-slide').classList.add('no-photo')"></figure>
+              <figure class="carousel-slide" data-label="Foto 15"><img src="assets/momentos-compartidos/foto-15.jpeg" alt="Momento compartido 15" onerror="this.closest('.carousel-slide').classList.add('no-photo')"></figure>
+              <figure class="carousel-slide" data-label="Foto 16"><img src="assets/momentos-compartidos/foto-16.jpeg" alt="Momento compartido 16" onerror="this.closest('.carousel-slide').classList.add('no-photo')"></figure>
+              <figure class="carousel-slide" data-label="Foto 17"><img src="assets/momentos-compartidos/foto-17.jpeg" alt="Momento compartido 17" onerror="this.closest('.carousel-slide').classList.add('no-photo')"></figure>
+            </div>
+            <button type="button" class="zoom-btn carousel-zoom" aria-label="Ampliar foto">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" /></svg>
+            </button>
+            <div class="carousel-dots"></div>
+          </div>
+
+          <p class="gallery-hint">Tocá una foto para ampliarla</p>
+        </div>
+      </section>
+
+      <!-- ===================== ACTO ===================== -->
+      <section class="lugar-section snap-section dark">
+        <div class="lugar-card">
+          <svg viewBox="0 0 24 24" width="30" height="30" class="section-icon">
+            <path fill="currentColor"
+              d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z" />
+          </svg>
+          <h3 class="serif-title card-title">El Acto</h3>
+          <h4 class="card-subtitle">Escuela N° 236</h4>
+          <p class="card-row"><strong>Fecha:</strong> Viernes 13 de Noviembre</p>
+          <p class="card-row"><strong>Hora:</strong> 10:00 hs</p>
+          <p class="card-row"><strong>Lugar:</strong> Esc. N° 236 Dr. Néstor C. Kirchner</p>
+          <p class="card-row"><strong>Localidad:</strong> La Ciénaga</p>
+          <a href="https://www.google.com/maps/search/?api=1&query=Escuela+236+Nestor+Kirchner+La+Cienaga+Tucuman" target="_blank" rel="noopener noreferrer"
+            class="primary-button">Cómo llegar</a>
+        </div>
+      </section>
+
+      <!-- ===================== CELEBRACIÓN ===================== -->
+      <section class="lugar-section snap-section dark">
+        <div class="lugar-card">
+          <svg viewBox="0 0 24 24" width="30" height="30" class="section-icon">
+            <path fill="currentColor"
+              d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+          </svg>
+          <h3 class="serif-title card-title">La Celebración</h3>
+          <h4 class="card-subtitle">Salón Felicita</h4>
+          <p class="card-row"><strong>Fecha:</strong> Viernes 13 de Noviembre</p>
+          <p class="card-row"><strong>Hora:</strong> 12:00 hs</p>
+          <p class="card-row"><strong>Dirección:</strong> 25 de Mayo 1331, Monteros</p>
+          <a href="https://www.google.com/maps/search/?api=1&query=25+de+Mayo+1331+Monteros+Tucuman" target="_blank" rel="noopener noreferrer"
+            class="primary-button">Cómo llegar</a>
+        </div>
+      </section>
+
+      <!-- ===================== CONFIRMACIÓN ===================== -->
+      <section class="confirmacion-section snap-section pink">
+        <div class="rsvp-card">
+          <svg viewBox="0 0 24 24" width="30" height="30" class="section-icon">
+            <path fill="currentColor"
+              d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.17 8.17 0 012.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.46 0-2.9-.39-4.16-1.13l-.3-.18-3.09.81.83-3.01-.2-.31a8.188 8.188 0 01-1.26-4.38c.01-4.54 3.7-8.23 8.24-8.23z" />
+          </svg>
+          <h3 class="serif-title card-title">Confirmación</h3>
+
+          <p class="rsvp-description">Contanos quién sos y cuántos van a venir</p>
+
+          <div class="rsvp-form">
+            <div class="form-group">
+              <label for="guestNameInput">Tu nombre o el de tu familia</label>
+              <input type="text" id="guestNameInput" class="rsvp-input" placeholder="Ej: Familia Pérez" maxlength="60" autocomplete="name" />
+            </div>
+
+            <div class="counters-row">
+              <div class="counter-group">
+                <span class="counter-label">Entradas</span>
+                <div class="counter-control">
+                  <button type="button" class="counter-btn" data-action="dec" aria-label="Restar entrada">&#8722;</button>
+                  <span class="counter-value" id="ticketsCount">1</span>
+                  <button type="button" class="counter-btn" data-action="inc" aria-label="Sumar entrada">+</button>
+                </div>
+                <span class="counter-price"><span data-precio></span> c/u</span>
+              </div>
+            </div>
+
+            <p class="rsvp-summary" id="rsvp-summary-text">CONFIRMÁS PARA<br>Entradas: 1</p>
+            <p class="rsvp-error" id="rsvp-error"></p>
+          </div>
+
+          <div class="rsvp-tarjeta-divider"><span>Tarjeta</span></div>
+
+          <div class="tarjeta-inline">
+            <div class="tarjeta-precios">
+              <div class="precio-item">
+                <span class="precio-label">Valor de la tarjeta</span>
+                <span class="precio-valor" data-precio></span>
+              </div>
+            </div>
+            <div class="tarjeta-breakdown" id="tarjeta-breakdown"></div>
+            <p class="tarjeta-total" id="tarjeta-total-text"></p>
+
+            <!-- Aviso de fecha límite de pago -->
+            <div class="pago-aviso" role="note">
+              <svg class="pago-aviso-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+                <path fill="currentColor" d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zM7 12h5v5H7v-5z" />
+              </svg>
+              <div class="pago-aviso-body">
+                <span class="pago-aviso-label">Importante</span>
+                <p class="pago-aviso-text">Las tarjetas deben abonarse <strong>hasta el <span data-fecha-pago>10 de octubre</span></strong></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rsvp-buttons-container">
+            <button class="primary-button rsvp-btn" data-contacto="josefa" type="button">Confirmar a Josefa</button>
+            <button class="primary-button rsvp-btn" data-contacto="marcela" type="button">Confirmar a Marcela</button>
+            <button class="primary-button rsvp-btn" data-contacto="naty" type="button">Confirmar a Naty</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== FINAL ===================== -->
+      <section class="final-section snap-section dark">
+        <div class="final-card">
+          <span class="final-monogram">Sandra &amp; Lina</span>
+          <div class="ornament light"><span></span><i></i><span></span></div>
+          <p class="final-subtitle">
+            Gracias por acompañarnos a cerrar una etapa maravillosa y a brindar por todo lo que viene.
+            Los esperamos con mucha alegría para celebrar juntos.
+          </p>
+        </div>
+
+        <footer class="invitation-footer">
+          <p class="footer-dev">Desarrollado por Elías Said</p>
+          <a class="footer-more" href="https://wa.me/5493865244579?text=Hola%20El%C3%ADas%2C%20vi%20la%20invitaci%C3%B3n%20y%20quisiera%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener noreferrer">Click aquí para más información</a>
+        </footer>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- ===================== VISOR DE FOTOS (pantalla completa) ===================== -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada" aria-hidden="true">
+    <button type="button" class="lb-btn lb-close" aria-label="Cerrar">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+    </button>
+    <button type="button" class="lb-btn lb-prev" aria-label="Foto anterior">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+    </button>
+    <figure class="lb-stage">
+      <img class="lb-img" src="" alt="" draggable="false">
+    </figure>
+    <button type="button" class="lb-btn lb-next" aria-label="Foto siguiente">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+    </button>
+    <div class="lb-counter" aria-live="polite"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

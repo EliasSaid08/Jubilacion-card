@@ -1,0 +1,14 @@
+FOTOS
+-----
+Colocá 5 fotos para cada jubilada, con estos nombres exactos:
+
+  assets/jubilada-1/foto-1.jpg ... foto-5.jpg
+  assets/jubilada-2/foto-1.jpg ... foto-5.jpg
+
+(Mientras no estén, el carrusel muestra un marcador rosa con "Foto 1", "Foto 2", etc.)
+Tip: usá fotos verticales o cuadradas, de ~1000 px de ancho, para que carguen rápido.
+
+MÚSICA (opcional)
+-----------------
+Si querés música de fondo, guardala como: assets/musica.mp3
+Si no existe el archivo, el botón de música se oculta solo.
