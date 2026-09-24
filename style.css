@@ -988,24 +988,15 @@ body {
 }
 .final-subtitle-close { font-style: normal; font-weight: 600; color: var(--dorado-claro); }
 
-/* Flor dorada decorativa, entre el mensaje final y el pie de página */
-.final-bottom-ornament {
+/* Rama de laurel dorada, entre el mensaje final y el pie de página */
+.final-bottom-accent {
   position: absolute;
   left: 50%;
-  bottom: 4.5rem;
+  bottom: 4.6rem;
   transform: translateX(-50%);
   z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  width: min(66%, 250px);
-}
-.final-bottom-ornament span { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--dorado-claro)); }
-.final-bottom-ornament span:last-child { background: linear-gradient(270deg, transparent, var(--dorado-claro)); }
-.final-bottom-ornament svg {
-  flex: none;
-  filter: drop-shadow(0 0 6px rgba(230, 205, 138, 0.55)) drop-shadow(0 1px 3px rgba(0, 0, 0, 0.35));
+  line-height: 0;
+  filter: drop-shadow(0 0 6px rgba(230, 205, 138, 0.5)) drop-shadow(0 1px 3px rgba(0, 0, 0, 0.35));
   animation: pulse 3s ease-in-out infinite;
 }
 
