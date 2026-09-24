@@ -27,16 +27,18 @@ body {
   color: var(--text-dark);
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  align-items: stretch;      /* la invitación ocupa todo el alto, sin franjas arriba ni abajo */
+  height: 100vh;
+  height: 100dvh;
+  margin: 0;
   overflow: hidden;
+  overscroll-behavior: none;
 }
 
 .app-wrapper {
   width: 100%;
   max-width: 480px;
-  height: 100vh;
-  height: 100dvh;
+  height: 100%;
   position: relative;
   box-shadow: 0 15px 50px rgba(74, 15, 36, 0.3);
   background-color: var(--card-bg);
@@ -906,7 +908,27 @@ body {
 .rsvp-btn { width: 100%; padding: min(1.5vh, 0.7rem) 0.5rem; font-size: min(1.7vh, 0.72rem); }
 
 /* ============ FINAL ============ */
-.final-card { background: transparent; gap: min(1.8dvh, 1rem); padding: 1.4rem 1.6rem; }
+/* Composición: título arriba (pegado al borde superior), mensaje centrado, pie abajo */
+.final-section {
+  justify-content: flex-start;
+  padding-top: calc(14px + min(2.5dvh, 1rem));
+  padding-bottom: 4.8rem;            /* lugar para el pie */
+}
+.final-card {
+  flex: 1;
+  min-height: 0;
+  justify-content: flex-start;
+  background: transparent;
+  gap: min(1.4dvh, 0.8rem);
+  padding: 0.6rem 1.6rem 0;
+}
+.final-message {
+  margin-block: auto;                /* queda centrado en el espacio entre el título y el pie */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: min(2.4dvh, 1.3rem);
+}
 
 /* Marco dorado fino que enmarca toda la página final */
 .final-section .final-frame {
@@ -959,19 +981,6 @@ body {
 }
 .final-subtitle-close { font-style: normal; font-weight: 500; color: var(--dorado-claro); }
 
-/* Fecha de cierre: retoma el recurso de la portada */
-.final-date {
-  margin-top: 0.4rem;
-  padding: 0.4rem 1.3rem;
-  font-family: var(--font-serif);
-  font-size: clamp(0.95rem, 2.4dvh, 1.15rem);
-  font-weight: 600;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--rosa-claro);
-  border-top: 1px solid var(--dorado);
-  border-bottom: 1px solid var(--dorado);
-}
 .invitation-footer {
   position: absolute !important;
   bottom: 1rem;
