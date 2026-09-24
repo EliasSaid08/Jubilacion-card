@@ -159,6 +159,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let timer = null;
     let suppressClick = false;
 
+    // Fondo difuminado con la misma foto (rellena los costados si la foto no es horizontal)
+    slides.forEach((slide) => {
+      const photo = slide.querySelector('img');
+      slide.style.setProperty('--photo', `url("${photo.getAttribute('src')}")`);
+    });
+
     const dots = slides.map((_, i) => {
       const b = document.createElement('button');
       b.type = 'button';

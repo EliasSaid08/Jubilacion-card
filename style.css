@@ -594,16 +594,27 @@ body {
 .carousel {
   position: relative;
   width: 100%;
-  height: clamp(260px, 64dvh, 620px);
+  aspect-ratio: 4 / 3;                 /* marco horizontal */
+  max-height: 62dvh;
   border-radius: 12px;
   overflow: hidden;
   background: var(--rosa);
   border: 2px solid var(--dorado-claro);
   touch-action: pan-y;
 }
-.carousel-track { display: flex; height: 100%; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
-.carousel-slide { position: relative; flex: 0 0 100%; height: 100%; cursor: zoom-in; }
-.carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; user-select: none; -webkit-user-drag: none; }
+.carousel-track { position: absolute; inset: 0; display: flex; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+.carousel-slide { position: relative; flex: 0 0 100%; height: 100%; overflow: hidden; cursor: zoom-in; }
+
+/* La foto se ve completa (sin recortes); si no es horizontal, el resto se rellena con la misma foto difuminada */
+.carousel-slide::before {
+  content: '';
+  position: absolute;
+  inset: -12%;
+  background: var(--photo) center / cover no-repeat;
+  filter: blur(18px) brightness(0.9) saturate(1.1);
+}
+.carousel-slide img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: contain; display: block; user-select: none; -webkit-user-drag: none; }
+.carousel-slide.no-photo::before { display: none; }
 
 /* Marcador cuando todavía no está la foto */
 .carousel-slide.no-photo {
@@ -895,12 +906,72 @@ body {
 .rsvp-btn { width: 100%; padding: min(1.5vh, 0.7rem) 0.5rem; font-size: min(1.7vh, 0.72rem); }
 
 /* ============ FINAL ============ */
-.final-card { background: transparent; }
-.final-monogram { font-family: var(--font-script); font-size: clamp(3.2rem, 9vh, 4.4rem); color: var(--dorado-claro); line-height: 1.1; }
+.final-card { background: transparent; gap: min(1.8dvh, 1rem); padding: 1.4rem 1.6rem; }
+
+/* Marco dorado fino que enmarca toda la página final */
+.final-section .final-frame {
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(230, 205, 138, 0.5);
+  border-radius: 10px;
+  pointer-events: none;
+  z-index: 1;
+}
+.final-section .final-frame::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(230, 205, 138, 0.22);
+  border-radius: 7px;
+}
+
+/* Monograma en dorado degradé, igual que la portada */
+.final-monogram {
+  display: block;
+  white-space: nowrap;
+  font-family: var(--font-script);
+  font-size: clamp(2.6rem, min(14vw, 8dvh), 4.2rem);
+  line-height: 1.15;
+  padding: 0 0.1em;
+  background: linear-gradient(180deg, #f6e8b8 0%, var(--dorado) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+.final-amp { font-size: 0.55em; -webkit-text-fill-color: var(--rosa); }
+
 .ornament.light span { background: linear-gradient(90deg, transparent, var(--dorado-claro)); }
 .ornament.light span:last-child { background: linear-gradient(270deg, transparent, var(--dorado-claro)); }
 .ornament.light i { background: var(--dorado-claro); }
-.final-subtitle { font-family: var(--font-serif); font-size: 1.25rem; line-height: 1.55; color: var(--rosa-claro); font-style: italic; }
+.final-flower { gap: 12px; }
+.final-flower span { flex: 0 1 84px; }
+.final-flower svg { flex: none; filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35)); }
+
+.final-subtitle {
+  max-width: 30ch;
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 2.7dvh, 1.25rem);
+  line-height: 1.6;
+  color: var(--rosa-claro);
+  font-style: italic;
+  text-wrap: balance;
+}
+.final-subtitle-close { font-style: normal; font-weight: 500; color: var(--dorado-claro); }
+
+/* Fecha de cierre: retoma el recurso de la portada */
+.final-date {
+  margin-top: 0.4rem;
+  padding: 0.4rem 1.3rem;
+  font-family: var(--font-serif);
+  font-size: clamp(0.95rem, 2.4dvh, 1.15rem);
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--rosa-claro);
+  border-top: 1px solid var(--dorado);
+  border-bottom: 1px solid var(--dorado);
+}
 .invitation-footer {
   position: absolute !important;
   bottom: 1rem;
@@ -912,6 +983,7 @@ body {
   gap: 0.1rem;
   text-align: center;
 }
+.final-section .invitation-footer { bottom: 1.7rem; }
 .footer-dev { font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: var(--rosa); opacity: 0.7; }
 .footer-more {
   display: inline-block;
@@ -963,7 +1035,6 @@ body {
 .snap-section.in-view .countdown-card { transition-delay: 0.25s; }
 
 @media (max-height: 640px) {
-  .carousel { height: 56dvh; }
   .mujer-text { font-size: 0.95rem; line-height: 1.4; }
   .mujer-photo { height: 36dvh; }
 }
