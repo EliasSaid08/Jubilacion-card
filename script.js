@@ -10,7 +10,7 @@ const CONFIG = {
   // WhatsApp de cada contacto (código de país + área + número, sin + ni espacios)
   telefonos: {
     marcela: '5493863407739',
-    josefa: '5493865606657',   // <- pasar el número de Josefa
+    josefa: '5493865666057',   // <- pasar el número de Josefa
     naty: '5493816202599',     // <- pasar el número de Naty
   },
 };
